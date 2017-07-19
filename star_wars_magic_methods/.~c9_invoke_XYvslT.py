@@ -9,7 +9,7 @@ class SaberCrystal(object):
             _other_color = other.color
         elif isinstance(other, tuple):
             _other_color = other
-            
+        return SaberCrystal((sum_red, sum_green, s))
         sum_red = self.red + _other_color[0]
         sum_green = self.green + _other_color[1] 
         sum_blue = self.blue + _other_color[2]
@@ -28,19 +28,18 @@ class SaberCrystal(object):
         return SaberCrystal((sub_red, sub_green, sub_blue))
         
     def __iadd__(self, other):
-#        return self.__add__(other)      
+        
         if isinstance(other, SaberCrystal):
             _other_color = other.color
         elif isinstance(other, tuple):
             _other_color = other
         
-        add_red = self.red + _other_color[0]
-        add_green = self.green + _other_color[1]
-        add_blue = self.blue + _other_color[2]
+        add_red = self.red += _other_color[0]
+        add_green = self.green += _other_color[1]
+        add_blue = self.blue += _other_color[2]
         
         return SaberCrystal((add_red, add_green, add_blue))
         
- 
     def __isub__(self, other):
         
         if isinstance(other, SaberCrystal):
@@ -48,13 +47,12 @@ class SaberCrystal(object):
         elif isinstance(other, tuple):
             _other_color = other
             
-        minus_red = self.red - _other_color[0]
-        minus_green = self.green - _other_color[1]
-        minus_blue = self.blue - _other_color[2]
+        minus_red = self.red -= _other_color[0]
+        minus_green = self.green -= _other_color[1]
+        minus_blue = self.blue -= _other_color[2]
     
         return SaberCrystal((minus_red, minus_green, minus_blue))
         
- 
     def __contains__(self, other):
         
         if isinstance(other, SaberCrystal):
